@@ -44,8 +44,72 @@ const rightmenu: Menu[] = [
 
 const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
 ---
-
+<div  x-data="{ open: false }" class="header top-0 sticky duration-[0.4s] z-20 shadow-sm" :class="{'open':open}">
+  <div class="header-wrapper relative bg-white px-[32px]">
+  <div class="header-inner min-h-[80px] flex justify-between items-stretch duration-[0.25s] opacity-100">
+    <div class="header-left flex items-center">
+      <nav>
+        <button class="w-14 h-14 relative focus:outline-none" @click="open = !open" x-on:click="isModalOpen = true">
+           
+            <div class="block w-5 absolute left-6 top-1/2   transform  -translate-x-1/2 -translate-y-1/2">
+                <span  class="block absolute h-0.5 w-7 text-black bg-current transform transition duration-500 ease-in-out" :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+                <span  class="block absolute  h-0.5 w-5 text-black bg-current   transform transition duration-500 ease-in-out" :class="{'opacity-0': open } "></span>
+                <span  class="block absolute  h-0.5 w-7 text-black bg-current transform  transition duration-500 ease-in-out" :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+            </div>
+        </button>
+    </nav>
+   
+    <div class="logo ml-[1rem] hidden lg:block">
+			<a class="cs-header__logo cs-logo-default " href="https://caards.codesupply.co/artboard/">
+				<img src="https://caards.codesupply.co/artboard/wp-content/uploads/sites/34/2023/04/artboard-logo.png" alt="Artboard" srcset="https://caards.codesupply.co/artboard/wp-content/uploads/sites/34/2023/04/artboard-logo.png 1x, https://caards.codesupply.co/artboard/wp-content/uploads/sites/34/2023/04/artboard-logo@2x.png 2x">
+      </a>
+							</div>
+             
+              <div class="hidden lg:block header__tag-line ml-[2rem] px-[2rem] py-[.5rem] border-r border-l text-black" :class="{'lg:hidden':open}">
+                Welcome to the Ultimate Design Resource Hub!			
+              </div>
+        
+              <div class="hidden group lg:flex items-center justify center text-black px-4 h-full pb-4 text-3xl hover:rotate-90 duration-300 hover:text-[#59BACC] cursor-pointer" :class="{'lg:hidden':open}">
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+              </div>
+    </div>
+    <div class="logo ml-[1rem] flex items-center lg:hidden">
+			<a class="cs-header__logo cs-logo-default " href="https://caards.codesupply.co/artboard/">
+				<img src="https://caards.codesupply.co/artboard/wp-content/uploads/sites/34/2023/04/artboard-logo.png" alt="Artboard" srcset="https://caards.codesupply.co/artboard/wp-content/uploads/sites/34/2023/04/artboard-logo.png 1x, https://caards.codesupply.co/artboard/wp-content/uploads/sites/34/2023/04/artboard-logo@2x.png 2x">
+      </a>
+							</div>
+    <div class="header-right flex items-center justify-center text-black" :class="{'lg:hidden':open}">
+      <span>Search</span>
+    </div>
+    </div>
+  </div>
+  </div>
+  <div
+  class="modal fixed inset-0 overflow-hidden bg-white z-10 p-32"
+  role="dialog"
+  tabindex="-1"
+  x-show="isModalOpen"
+  x-on:click.away="isModalOpen = false"
+  x-cloak
+  x-transition.duration.500ms
+>
+    <div class="model-inner">
+      <div class="modal-header">
+        <h3>Hello World</h3>
+        <button aria-label="Close" x-on:click="isModalOpen = false">✖</button>
+      </div>
+      <p class="text-black">
+        Natus earum velit ab nobis eos. Sed et exercitationem voluptatum omnis
+        dolor voluptates. Velit ut ipsam sunt ipsam nostrum. Maiores officia
+        accusamus qui sapiente. Dolor qui vel placeat dolor nesciunt quo dolor
+        dolores. Quo accusamus hic atque nisi minima.
+      </p>
+    </div>
+</div>
 <Container>
+
   <nav>
     <div class="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
       <div
@@ -124,11 +188,3 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
   </nav>
 </Container>
 
-<script is:inline>
-  const menuButton = document.getElementById("menu");
-  menuButton.addEventListener("click", () => {
-    [...document.querySelectorAll(".navmenu-toggle")].forEach((Element) => {
-      Element.classList.toggle("hidden");
-    });
-  });
-</script>

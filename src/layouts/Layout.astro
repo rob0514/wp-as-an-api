@@ -1,9 +1,12 @@
 ---
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar.astro";
+import { ScrollObserver } from 'astro-scroll-observer';
 import "@fontsource/inter/variable.css";
 import { checkImageUrl } from "@utils/all";
 import { SEO } from "astro-seo";
+import "../style/base.css";
+
 
 export interface Props {
   title?: string;
@@ -51,17 +54,23 @@ const makeTitle = title
         },
       }}
     />
+    <ScrollObserver />
   </head>
-  <body>
+  <body x-data="{'isModalOpen': false}" :class="{'noScroll':isModalOpen}">
     <Navbar />
     <slot />
     <Footer client:visible />
     <style is:global>
+      body{
+        background:#f5f7f8;
+      }
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
       }
     </style>
+    
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
   </body>
 </html>

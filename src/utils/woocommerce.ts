@@ -2,8 +2,8 @@ import WooCommerceRestApi from "woocommerce-rest-ts-api";
 
 const api = new WooCommerceRestApi({
   url: "http://localhost:8081",
-  consumerKey: "ck_ad1b278b172fa28618e43922b126bf89ed85bd78",
-  consumerSecret: "cs_885e0b79c219aba326af8278c93d971a74734342",
+  consumerKey: "ck_70e28623ff528e94ac36d1acae188aa456d5432d",
+  consumerSecret: "cs_6e4a740a25b094c43e50664eadec5cc2f9594851",
   version: "wc/v3",
   queryStringAuth: false // Force Basic Authentication as query string true and using under HTTPS
 });

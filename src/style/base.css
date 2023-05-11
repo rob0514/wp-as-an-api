@@ -1,0 +1,13 @@
+[data-is-scrolling-up='false'][data-is-top='false'][data-has-scroll='true'] .header {
+    opacity: 0;
+}
+
+[data-is-scrolling-up='false'][data-is-top='false'][data-has-scroll='true'] .open {
+    opacity: 1;
+}
+
+.noScroll{
+    height:100%;
+    margin:0;
+    overflow:hidden;
+}
