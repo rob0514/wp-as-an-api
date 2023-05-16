@@ -1,0 +1,55 @@
+---
+import { Image } from "@astrojs/image/components";
+
+export interface Props {
+    title: string,
+    category: string,
+	image: string,
+    alt: string,
+    excerpt: string,
+    articlehref: string,
+    cathref: string,
+}
+
+const { title, image, alt, excerpt, articlehref, cathref, category } = Astro.props;
+---
+
+<div class="flex-1">
+    <a 
+    href={articlehref} 
+    class="md:w-full mt-4 block border border-gray-100 w-full"
+    >
+    <Image 
+    class="w-full" 
+    src={image} 
+    alt={alt} 
+    width={672} 
+    height={415} 
+    loading="lazy"
+    />
+    </a>
+    <a 
+    class=" text-[0.75rem] text-[#2f323d] inline-block text-xs mt-4 uppercase" 
+    href={cathref}
+    >
+    {category}
+    </a>
+    <a 
+    class=" block w-full text-[1.5rem] text-[#2f323d] font-semibold leading-tight mt-2" 
+    href={articlehref}
+    >
+      {title}
+    </a>
+    <a 
+    class=" block w-full text-[0.75rem] text-[#2f323d] leading-tight mt-2" 
+    href={articlehref}
+    >
+      {excerpt}
+    </a>
+    <div class="flex items-center justify-between mt-4 border-t border-gray-200">
+        <a href="#" class="text-black text-xs mt-4">Read more</a>
+        <div class="font-light text-xs text-gray-600 mt-4">
+          <span><i class="far fa-clock"></i> 5 min read</span>
+        </div>
+      </div>
+    </div>

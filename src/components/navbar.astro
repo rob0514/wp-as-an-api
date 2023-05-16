@@ -87,7 +87,7 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
   </div>
   </div>
   <div
-  class="modal fixed inset-0 overflow-hidden bg-white z-10 p-32"
+  class="fixed inset-0 overflow-hidden bg-white z-10 p-32"
   role="dialog"
   tabindex="-1"
   x-show="isModalOpen"
@@ -100,91 +100,86 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
         <h3>Hello World</h3>
         <button aria-label="Close" x-on:click="isModalOpen = false">✖</button>
       </div>
-      <p class="text-black">
-        Natus earum velit ab nobis eos. Sed et exercitationem voluptatum omnis
-        dolor voluptates. Velit ut ipsam sunt ipsam nostrum. Maiores officia
-        accusamus qui sapiente. Dolor qui vel placeat dolor nesciunt quo dolor
-        dolores. Quo accusamus hic atque nisi minima.
-      </p>
+      <nav>
+        <div class="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
+          <div
+            class="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1">
+            {
+              leftmenu.map((item) => (
+                <a
+                  href={item.href}
+                  class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+    
+          <div class="flex items-center justify-between w-full md:w-auto">
+            <a class="w-28 dark:hidden" href="/">
+              <img src={logoImage} alt="Logo" width={132} height={52} />
+            </a>
+    
+            <a class="hidden w-28 dark:block" href="/">
+              <img src={darkLogo} alt="Logo" width={132} height={52} />
+            </a>
+    
+            <button
+              id="menu"
+              aria-label="Toggle Menu"
+              class="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 focus:outline-none dark:text-gray-300">
+              <svg
+                class="w-6 h-6 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path
+                  class="navmenu-toggle"
+                  fill-rule="evenodd"
+                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                ></path>
+    
+                <path
+                  class="navmenu-toggle hidden"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                ></path>
+              </svg>
+            </button>
+          </div><div
+            class="flex-col items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
+            {
+              rightmenu.map((item) => (
+                <a
+                  href={item.href}
+                  class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+        <div class="navmenu-toggle hidden">
+          <div
+            class="flex flex-col items-center justify-start order-2 w-full md:hidden">
+            {
+              mobilemenu.map((item, index) => (
+                <a
+                  href={item.href}
+                  class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
+                  target={item.external ? "_blank" : ""}
+                  rel={item.external ? "noopener" : ""}>
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </nav>
     </div>
 </div>
 <Container>
 
-  <nav>
-    <div class="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
-      <div
-        class="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1">
-        {
-          leftmenu.map((item) => (
-            <a
-              href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
-              {item.label}
-            </a>
-          ))
-        }
-      </div>
-
-      <div class="flex items-center justify-between w-full md:w-auto">
-        <a class="w-28 dark:hidden" href="/">
-          <img src={logoImage} alt="Logo" width={132} height={52} />
-        </a>
-
-        <a class="hidden w-28 dark:block" href="/">
-          <img src={darkLogo} alt="Logo" width={132} height={52} />
-        </a>
-
-        <button
-          id="menu"
-          aria-label="Toggle Menu"
-          class="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 focus:outline-none dark:text-gray-300">
-          <svg
-            class="w-6 h-6 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24">
-            <path
-              class="navmenu-toggle"
-              fill-rule="evenodd"
-              d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-            ></path>
-
-            <path
-              class="navmenu-toggle hidden"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-            ></path>
-          </svg>
-        </button>
-      </div><div
-        class="flex-col items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
-        {
-          rightmenu.map((item) => (
-            <a
-              href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
-              {item.label}
-            </a>
-          ))
-        }
-      </div>
-    </div>
-    <div class="navmenu-toggle hidden">
-      <div
-        class="flex flex-col items-center justify-start order-2 w-full md:hidden">
-        {
-          mobilemenu.map((item, index) => (
-            <a
-              href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
-              target={item.external ? "_blank" : ""}
-              rel={item.external ? "noopener" : ""}>
-              {item.label}
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </nav>
+ 
 </Container>
 

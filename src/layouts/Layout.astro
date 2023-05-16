@@ -58,8 +58,10 @@ const makeTitle = title
   </head>
   <body x-data="{'isModalOpen': false}" :class="{'noScroll':isModalOpen}">
     <Navbar />
+    <div>
     <slot />
-    <Footer client:visible />
+  </div>
+  <Footer client:visible />
     <style is:global>
       body{
         background:#f5f7f8;
@@ -70,7 +72,7 @@ const makeTitle = title
         content-visibility: auto;
       }
     </style>
-    
+      <script is:inline src="/butter.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
   </body>
 </html>
